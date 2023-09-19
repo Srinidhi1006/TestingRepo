@@ -17,11 +17,11 @@ pipeline {
                     def statusCode = response.getStatus()
 
                     // Get the HTTP response status text
-                    def statusText = response.statusLine.toString()
+                   def responseBody = response.getContent()
 
                     // Print the status code and status text to the console
                     echo "Response Code: ${statusCode}"
-                    echo "Response Status Text: ${statusText}"
+                    echo "Response Body: ${responseBody}"
                 }
             }
         }
