@@ -13,10 +13,15 @@ pipeline {
                         validResponseCodes: '200',      // Expected HTTP response code(s)
                         responseHandle: 'NONE'          // How to handle the response (NONE, JSON, XML, etc.)
                     )
+ // Get the HTTP response status code
+                    def statusCode = response.getStatus()
 
-                    // Print the response to the console
-                    echo "Response Code: ${response.getStatusText()}"
-                    echo "Response Body: ${response.getContent()}"
+                    // Get the HTTP response status text
+                    def statusText = response.statusLine.toString()
+
+                    // Print the status code and status text to the console
+                    echo "Response Code: ${statusCode}"
+                    echo "Response Status Text: ${statusText}"
                 }
             }
         }
